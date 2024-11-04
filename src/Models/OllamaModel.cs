@@ -56,6 +56,9 @@ namespace OllamaLib.Models
         }
     }
 
+    /// <summary>
+    /// Represents the data structure for sending chat messages to the API.
+    /// </summary>
     public class ChatPostData
     {
         public class Message
