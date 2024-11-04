@@ -19,5 +19,13 @@ class Program
         {
             Console.WriteLine("An error occurred: " + ex.Message);
         }
+
+        Console.WriteLine("\nModels:");
+
+        var models = await OllamaRepository.GetModels();
+        foreach (var model in models)
+        {
+            Console.WriteLine(model.name);
+        }
     }
 }
