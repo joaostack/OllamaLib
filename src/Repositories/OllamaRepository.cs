@@ -60,7 +60,10 @@ namespace OllamaLib.Repositories
             var finalPostData = new StringContent(chatPostDataJson, Encoding.UTF8, "application/json");
             using HttpResponseMessage response = await _httpClient.PostAsync($"{_apiUrl}/api/chat", finalPostData);
 
-            return await response.Content.ReadAsStringAsync();
+            var responseJson = await response.Content.ReadAsStringAsync();
+            var responseDeserialize = JsonSerializer.Deserialize<ChatModel.Root>(responseJson);
+
+            return responseDeserialize.message.content;
         }
     }
 }

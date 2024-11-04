@@ -9,7 +9,8 @@ namespace OllamaLib.Interfaces
     public interface IOllama
     {
         void SetApi(string apiUrl);
-        Task<string> Chat(string message);
+        void SetModel(string model);
+        Task<string> Chat(string role, string message);
         Task<List<string>> GetModels();
     }
 }
