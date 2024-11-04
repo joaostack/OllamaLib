@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OllamaLib.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,6 @@ namespace OllamaLib.Interfaces
         void SetApi(string apiUrl);
         void SetModel(string model);
         Task<string> Chat(string role, string message);
-        Task<List<string>> GetModels();
+        Task<List<GetModel.Model>> GetModels();
     }
 }

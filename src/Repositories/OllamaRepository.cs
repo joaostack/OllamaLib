@@ -65,5 +65,19 @@ namespace OllamaLib.Repositories
 
             return responseDeserialize.message.content;
         }
+
+        /// <summary>
+        /// Asynchronously retrieves a list of AI models from the Ollama API.
+        /// Sends a GET request to the API endpoint for tags and deserializes the response into a list of models.
+        /// </summary>
+        /// <returns>A task that represents the asynchronous operation, containing a list of <see cref="GetModel.Model"/> objects.</returns>
+        public static async Task<List<GetModel.Model>> GetModels()
+        {
+            using HttpResponseMessage response = await _httpClient.GetAsync($"{_apiUrl}/api/tags");
+            var responseJson = await response.Content.ReadAsStringAsync();
+            var responseDeserialize = JsonSerializer.Deserialize<GetModel.Root>(responseJson);
+
+            return responseDeserialize.models;
+        }
     }
 }
