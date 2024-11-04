@@ -71,6 +71,7 @@ namespace OllamaLib.Models
         {
             public string model { get; set; }
             public List<Message> messages { get; set; }
+            public bool stream {  get; set; }
         }
     }
 }

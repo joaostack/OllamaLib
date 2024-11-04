@@ -24,6 +24,10 @@ namespace OllamaLib.Repositories
             _apiUrl = apiUrl;
         }
 
+        /// <summary>
+        /// Set target ollama model
+        /// </summary>
+        /// <param name="model">The model.</param>
         public static void SetModel(string model)
         {
             _model = model;
@@ -45,9 +49,11 @@ namespace OllamaLib.Repositories
                     new ChatPostData.Message
                     {
                         role = role,
-                        content = message
-                    }
-                }
+                        content = message,
+                    },
+                },
+
+                stream = false
             };
 
             string chatPostDataJson = JsonSerializer.Serialize(chatPostData);
